@@ -1,14 +1,14 @@
 import java.util.*;
 
 public class Main {
-    static class scan {
+    static class scan{
         int id;
         String name;
         int duration;
         boolean pause;
         String state;
 
-        scan(int id, String name, int duration, boolean pause) {
+        scan(int id, String name, int duration, boolean pause){
             this.id = id;
             this.name = name;
             this.duration = duration;
@@ -19,8 +19,8 @@ public class Main {
 
     static class ScanController {
         ArrayList<scan> list = new ArrayList<>();
-        void handleCommand(String command) {
-            if (command.startsWith("add:")) {
+        void handleCommand(String command){
+            if (command.startsWith("add:")){
                 String[] p = command.substring(4).split(",");
                 int id = Integer.parseInt(p[0].trim());
                 String name = p[1].trim();
@@ -29,15 +29,15 @@ public class Main {
                 list.add(new scan(id, name, duration, pause));
                 System.out.println("Added " + name);
             }
-            else if (command.equals("view")) {
+            else if (command.equals("view")){
                 for (scan s : list) {
                     System.out.println(
                         s.id + ", " + s.name + ", " + s.duration + ", " + s.pause + ", " + s.state);
                 }
             }
-            else if (command.equals("start")) {
+            else if (command.equals("start")){
                 for (scan s : list) {
-                    if (s.state.equals("IDLE")) {
+                    if (s.state.equals("IDLE")){
                         s.state = "RUNNING";
                         System.out.println("Starting " + s.name);
                         try {
@@ -53,17 +53,16 @@ public class Main {
                     }
                 }
             }
-            else if (command.startsWith("remove:")) {
+            else if (command.startsWith("remove:")){
                 int id = Integer.parseInt(command.substring(7).trim());
                 for (int i = 0; i < list.size(); i++) {
-                    if (list.get(i).id == id &&
-                        list.get(i).state.equals("IDLE")) {
+                    if (list.get(i).id == id && list.get(i).state.equals("IDLE")) {
                         list.remove(i);
                         break;
                     }
                 }
             }
-            else if (command.equals("exit")) {
+            else if (command.equals("exit")){
                 System.exit(0);
             }
         }

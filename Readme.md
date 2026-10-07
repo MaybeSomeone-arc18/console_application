@@ -1,6 +1,7 @@
 ### Overview
 A console application that queues up "scans" via typed commands and runs them one at a time in the background, while still accepting new commands at any moment — even mid-scan.
 A “scan” is a dummy task which runs for the duration given by the user.
+--
 Example Output – 
 Current Queue --> Scan:1, Scan A, 5, Yes
 Command sent --> start
